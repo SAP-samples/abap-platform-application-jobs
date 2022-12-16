@@ -4,6 +4,8 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
 -->
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/abap-platform-application-jobs)](https://api.reuse.software/info/github.com/SAP-samples/abap-platform-application-jobs)
+
 ## Description
 
 ### Introduction
