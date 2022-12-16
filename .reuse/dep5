@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: abap-platform-application-jobs
+Upstream-Name: ABAP Plattform Application Jobs
 Upstream-Contact: andre.fischer@sap.com
-Source: <https://github.com/sap-samples/YOUR-REPO-NAME>
+Source: https://github.com/sap-samples/abap-platform-application-jobs/
 Disclaimer: The code in this project may include calls to APIs ("API Calls") of
  SAP or third-party products or services developed outside of this project
  ("External Products").
