@@ -20,7 +20,7 @@ Please edit this file as it is the primary description file for your project. Yo
 
 ## Description
 <!-- Please include SEO-friendly description -->
-In this repository you will find the implementation of a simple RAP (ABAP RESTful application programming model) business object that allows to schedule a class as an application job that takes the semantic key of the selected entity as a parameter. This way it is possible to perform a long running calculation (the determination of inventory data) for a specific inventory id.
+In this repository you will find the implementation of a simple RAP (ABAP RESTful application programming model) business object that allows you to schedule a class as an application job that takes the semantic key of the selected entity as a parameter. This way it is possible to perform a long running calculation (the determination of inventory data) for a specific inventory id.
 
 It will especially show how this class can also be run interactively thereby allowing the developer to debug the implementation, which is not possible when the code is executed in the background as an application job.
 
