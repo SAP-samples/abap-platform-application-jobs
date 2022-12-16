@@ -189,7 +189,18 @@ These fields contain the job status (for example **'F'** for finished) and the a
 
 ## Requirements
 
+- ABAP Platform 2021 and higher  
+- SAP BTP, ABAP Environment  
+- SAP S/4HANA, ABAP Environment  
+
 ## Download and Installation
+
+- Create a package, e.g. Z_DEMO_APPL_JOBS 
+- Link the URL of this repo with the package that you have created beforehand
+- Pull the content of this repository
+- Activate all changes
+- Run the setup class ``zapp_cl_demo_01_setup``  
+- Publish the service bindings ``ZAPPUI_INVENTORY_O4_01`` or ``ZAPPUI_INVENTORY_O2_01``   
 
 ## Known Issues
 <!-- You may simply state "No known issues. -->
