@@ -1,0 +1,61 @@
+managed;
+with draft;
+
+define behavior for ZAPPR_InventoryTP_01 alias Inventory
+implementation in class ZAPPBP_R_Inventory_01 unique
+with additional save
+persistent table zapp_inven_01
+draft table zappinvent00d_01
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+
+{
+  field ( readonly )
+  InventoryID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( numbering : managed )
+  UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  action ( features : instance ) calculateInventory result [1] $self;
+
+  mapping for ZAPP_INVEN_01
+  {
+    UUID = UUID;
+    InventoryID = INVENTORY_ID;
+    ProductID = PRODUCT_ID;
+    Quantity = QUANTITY;
+    QuantityUnit = QUANTITY_UNIT;
+    Price = PRICE;
+    CurrencyCode = CURRENCY_CODE;
+    Remark = REMARK;
+    NotAvailable = NOT_AVAILABLE;
+    ScheduleJob = SCHEDULE_JOB;
+    JobCount = job_count;
+    JobName = job_name;
+    LogHandle = log_handle;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  determination CalculateInventoryID on save { create; }
+}

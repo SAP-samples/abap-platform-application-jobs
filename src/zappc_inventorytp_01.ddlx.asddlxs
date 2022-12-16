@@ -1,0 +1,192 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Inventory',
+    typeNamePlural: 'Inventorys',
+    title: {
+      type: #STANDARD,
+      label: 'Inventory',
+      value: 'InventoryID'
+    }
+  },
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'InventoryID',
+      direction: #DESC
+    } ],
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZAPPC_InventoryTP_01 with
+{
+
+
+
+  @UI.facet: [ {
+    id: 'idCollection',
+    type: #COLLECTION,
+    label: 'Inventory',
+    position: 10
+  },
+
+
+  {
+    purpose: #HEADER,
+    type: #FIELDGROUP_REFERENCE,
+    position: 50,
+    targetQualifier: 'Fieldgroup1'
+  },
+
+  {
+    id: 'idIdentification',
+    parentId: 'idCollection',
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'General Information',
+    position: 10
+  } ]
+  @UI.hidden: true
+  UUID;
+
+  @UI.lineItem: [ {
+    position: 20 ,
+    importance: #HIGH,
+    label: 'InventoryID'
+  } ]
+  @UI.identification: [ {
+    position: 20 ,
+    label: 'InventoryID'
+  }
+  ,
+  { type: #FOR_ACTION, dataAction: 'calculateInventory', label: 'Calculate inventory' }
+  ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  InventoryID;
+
+  @UI.lineItem: [ {
+    position: 30 ,
+    importance: #HIGH,
+    label: 'ProductID'
+  } ]
+  @UI.identification: [ {
+    position: 30 ,
+    label: 'ProductID'
+  } ]
+  ProductID;
+
+  @UI.lineItem: [ {
+    position: 40 ,
+    importance: #HIGH,
+    label: 'Quantity'
+  } ]
+  @UI.identification: [ {
+    position: 40 ,
+    label: 'Quantity'
+  } ]
+  Quantity;
+
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  QuantityUnit;
+
+  @UI.lineItem: [ {
+    position: 60 ,
+    importance: #HIGH,
+    label: 'Price'
+  } ]
+  @UI.identification: [ {
+    position: 60 ,
+    label: 'Price'
+  } ]
+  Price;
+
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  CurrencyCode;
+
+  @UI.lineItem: [ {
+    position: 80 ,
+    importance: #HIGH,
+    label: 'Remark'
+  } ]
+  @UI.identification: [ {
+    position: 80 ,
+    label: 'Remark'
+  } ]
+  Remark;
+
+  @UI.lineItem: [ {
+    position: 90 ,
+    importance: #HIGH,
+    label: 'Not available'
+  } ]
+  @UI.identification: [ {
+    position: 90,
+    label: 'Not available'
+  } ]
+  NotAvailable;
+
+  @UI.lineItem: [ {
+  position: 90 ,
+  importance: #HIGH,
+  label: 'Schedule job'
+  } ]
+  @UI.identification: [ {
+    position: 95,
+    label: 'Schedule job'
+  } ]
+  @UI.selectionField: [ { position: 95 } ]
+  ScheduleJob;
+
+  @UI.lineItem: [ {
+  position: 220 ,
+  importance: #HIGH,
+  label: 'Inventory Status',
+  criticality: 'JobStatusCriticality'
+  } ]
+  @UI: { fieldGroup: [ { qualifier: 'Fieldgroup1',
+                         position: 40 ,
+                         label: 'Inventory Status',
+                         criticality: 'JobStatusCriticality' } ] ,
+         dataPoint:    { title: 'Generation Job Status',
+                         targetValueElement: 'JobStatusText',
+                         criticality: 'JobStatusCriticality',
+                         criticalityRepresentation: #WITH_ICON }
+       }
+   @UI.selectionField: [ { position: 220 } ]    
+  JobStatusText;
+
+  @UI.hidden: true
+  JobCount;
+
+  @UI.hidden: true
+  JobName;
+
+
+  @UI.identification: [ {
+    position: 190,
+    label: 'LogHandle'
+  } ]
+  //  @UI.hidden: true
+  LogHandle;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}
