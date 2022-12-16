@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: ABAP Plattform Application Jobs
+Upstream-Name: How to schedule application jobs from a RAP-based business object
 Upstream-Contact: andre.fischer@sap.com
 Source: https://github.com/sap-samples/abap-platform-application-jobs/
 Disclaimer: The code in this project may include calls to APIs ("API Calls") of
