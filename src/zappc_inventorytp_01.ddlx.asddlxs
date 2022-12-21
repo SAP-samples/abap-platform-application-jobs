@@ -91,6 +91,16 @@ annotate view ZAPPC_InventoryTP_01 with
   @UI.selectionField: [ {
     position: 50
   } ]
+  
+    @UI.lineItem: [ {
+    position: 50 ,
+    importance: #HIGH,
+    label: 'Quantity'
+  } ]
+  @UI.identification: [ {
+    position: 50 ,
+    label: 'Quantity'
+  } ]
   QuantityUnit;
 
   @UI.lineItem: [ {

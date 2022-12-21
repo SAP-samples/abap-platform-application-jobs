@@ -20,6 +20,12 @@
      <MSGNR>001</MSGNR>
      <TEXT>Root cause: &amp;1</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAPP_CM_DEMO_01</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Job scheduling error &amp;1 &amp;2</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

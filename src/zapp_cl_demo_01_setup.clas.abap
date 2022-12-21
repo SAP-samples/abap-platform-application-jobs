@@ -8,10 +8,10 @@ CLASS zapp_cl_demo_01_setup DEFINITION
 
     DATA package_name_of_rap_generator TYPE sxco_package READ-ONLY.
 
-    METHODS constructor RAISING zdmo_cx_rap_generator.
-    METHODS create_application_log_entry RETURNING VALUE(r_application_log_object_name) TYPE string RAISING zdmo_cx_rap_generator. "if_bali_object_handler=>ty_object RAISING zdmo_cx_rap_generator.
-    METHODS create_job_catalog_entry RETURNING VALUE(r_job_catalog_name) TYPE string RAISING zdmo_cx_rap_generator. "TYPE cl_apj_dt_create_content=>ty_catalog_name RAISING zdmo_cx_rap_generator.
-    METHODS create_job_template_entry RETURNING VALUE(r_job_template_name) TYPE string RAISING zdmo_cx_rap_generator. " TYPE cl_apj_dt_create_content=>ty_template_name RAISING zdmo_cx_rap_generator.
+    METHODS constructor RAISING zapp_cx_demo_01.
+    METHODS create_application_log_entry RETURNING VALUE(r_application_log_object_name) TYPE string RAISING zapp_cx_demo_01. "if_bali_object_handler=>ty_object RAISING zapp_cx_demo_01.
+    METHODS create_job_catalog_entry RETURNING VALUE(r_job_catalog_name) TYPE string RAISING zapp_cx_demo_01. "TYPE cl_apj_dt_create_content=>ty_catalog_name RAISING zapp_cx_demo_01.
+    METHODS create_job_template_entry RETURNING VALUE(r_job_template_name) TYPE string RAISING zapp_cx_demo_01. " TYPE cl_apj_dt_create_content=>ty_template_name RAISING zapp_cx_demo_01.
 
 
 
@@ -27,13 +27,14 @@ CLASS zapp_cl_demo_01_setup DEFINITION
            END OF t_longtext.
 
     DATA transport_request TYPE sxco_transport .
-    DATA xco_on_prem_library TYPE REF TO zdmo_cl_rap_xco_on_prem_lib  .
+**    DATA xco_on_prem_library TYPE REF TO zdmo_cl_rap_xco_on_prem_lib  .
     DATA package_of_rap_generator TYPE REF TO if_xco_package.
-    DATA xco_lib TYPE REF TO zdmo_cl_rap_xco_lib.
+*    DATA xco_lib TYPE REF TO zdmo_cl_rap_xco_lib.
 
-    METHODS create_transport RETURNING VALUE(r_transport_request) TYPE sxco_transport.
+    METHODS create_transport RETURNING VALUE(r_transport_request) TYPE sxco_transport RAISING zapp_cx_demo_01.
 
 *data application_log_sub_obj1_name.
+    DATA suffix TYPE string VALUE '01'.
     DATA application_log_sub_obj1_name TYPE if_bali_object_handler=>ty_object VALUE 'ZAPP_DEMO_01_SUB'.
     DATA application_log_sub_obj1_text TYPE if_bali_object_handler=>ty_object_text VALUE 'Application Log' .
     DATA application_log_object_name TYPE if_bali_object_handler=>ty_object VALUE 'ZAPP_DEMO_01_LOG' .
@@ -56,19 +57,19 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
     TRY.
         DATA(application_log_object_name) = create_application_log_entry(  ).
         out->write( |{ application_log_object_name } | ).  ##NO_TEXT
-      CATCH zdmo_cx_rap_generator INTO DATA(rap_generator_setup_exception).
+      CATCH zapp_cx_demo_01 INTO DATA(rap_generator_setup_exception).
         out->write( rap_generator_setup_exception->get_text(  ) ).
     ENDTRY.
     TRY.
         DATA(job_catalog_name) = create_job_catalog_entry(  ).
         out->write( |{ job_catalog_name } | ).  ##NO_TEXT
-      CATCH zdmo_cx_rap_generator INTO rap_generator_setup_exception.
+      CATCH zapp_cx_demo_01 INTO rap_generator_setup_exception.
         out->write( rap_generator_setup_exception->get_text(  ) ).
     ENDTRY.
     TRY.
         DATA(job_template_name) = create_job_template_entry(  ).
         out->write( |{ job_template_name } | ).  ##NO_TEXT
-      CATCH zdmo_cx_rap_generator INTO rap_generator_setup_exception.
+      CATCH zapp_cx_demo_01 INTO rap_generator_setup_exception.
         out->write( rap_generator_setup_exception->get_text(  ) ).
     ENDTRY.
 
@@ -81,25 +82,23 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
     DATA transport_request_description TYPE sxco_ar_short_description VALUE 'Create Application Job Catalog Entry and Job Template'.
     DATA package_name_to_check TYPE sxco_package  .
 
-
-    package_name_to_check = package_of_rap_generator->name.
     TRY.
+        package_name_to_check = package_of_rap_generator->name.
 
-
-        WHILE xco_cp_abap_repository=>object->devc->for( package_name_of_rap_generator )->read( )-property-transport_layer->value = '$SPL'.
+        WHILE xco_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-transport_layer->value = '$SPL'.
 *         xco_lib->get_package( package_name_to_check )->read( )-property-transport_layer->value = '$SPL'.
-          package_name_to_check = xco_cp_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-super_package->name.
+          package_name_to_check = xco_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-super_package->name.
         ENDWHILE.
-        DATA(transport_target) = xco_cp_abap_repository=>object->devc->for( package_name_to_check
+        DATA(transport_target) = xco_abap_repository=>object->devc->for( package_name_to_check
           )->read( )-property-transport_layer->get_transport_target( ).
         DATA(transport_target_name) = transport_target->value.
         r_transport_request = xco_cp_cts=>transports->workbench( transport_target_name )->create_request( transport_request_description )->value.
       CATCH cx_root INTO DATA(exc_getting_transport_target).
         CLEAR r_transport_request.
         longtext = exc_getting_transport_target->get_text( ).
-        RAISE EXCEPTION NEW zdmo_cx_rap_generator( textid     = zdmo_cx_rap_generator=>job_scheduling_error
-                                                   mv_value   = CONV #( longtext-msgv1 )
-                                                   mv_value_2 = CONV #( longtext-msgv2 )
+        RAISE EXCEPTION NEW zapp_cx_demo_01( textid     = zapp_cx_demo_01=>job_scheduling_error
+                                                   error_value_1   = CONV #( longtext-msgv1 )
+                                                   error_value_2 = CONV #( longtext-msgv2 )
                                                    previous   = exc_getting_transport_target
                                                    ).
     ENDTRY.
@@ -133,18 +132,18 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
 
       CATCH cx_apj_dt_content INTO DATA(lx_apj_dt_content).
 
-        IF NOT ( lx_apj_dt_content->if_t100_message~t100key-msgno = cx_apj_dt_content=>cx_object_already_exists-msgno AND
-                 lx_apj_dt_content->if_t100_message~t100key-msgid = cx_apj_dt_content=>cx_object_already_exists-msgid AND
-                 lx_apj_dt_content->object = 'ZAPP_DEMO_02' ).
-          longtext = lx_apj_dt_content->get_text( ).
-          RAISE EXCEPTION NEW zdmo_cx_rap_generator( textid     = zdmo_cx_rap_generator=>job_scheduling_error
-                                                     mv_value   = CONV #( longtext-msgv1 )
-                                                     mv_value_2 = CONV #( longtext-msgv2 )
-                                                     previous   = lx_apj_dt_content
-                                                     ).
-        ELSE.
-          r_job_catalog_name = lx_apj_dt_content->get_text(  ).
-        ENDIF.
+*        IF NOT ( lx_apj_dt_content->if_t100_message~t100key-msgno = cx_apj_dt_content=>cx_object_already_exists-msgno AND
+*                 lx_apj_dt_content->if_t100_message~t100key-msgid = cx_apj_dt_content=>cx_object_already_exists-msgid AND
+*                 lx_apj_dt_content->object = job_catalog_name ).
+        longtext = lx_apj_dt_content->get_text( ).
+        RAISE EXCEPTION NEW zapp_cx_demo_01( textid     = zapp_cx_demo_01=>job_scheduling_error
+                                                   error_value_1   = CONV #( longtext-msgv1 )
+                                                   error_value_2 = CONV #( longtext-msgv2 )
+                                                   previous   = lx_apj_dt_content
+                                                   ).
+*        ELSE.
+*          r_job_catalog_name = lx_apj_dt_content->get_text(  ).
+*        ENDIF.
     ENDTRY.
   ENDMETHOD.
 
@@ -173,18 +172,18 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
         r_job_template_name = |Job template {  job_template_name } generated successfully|." job_template_name.
 
       CATCH cx_apj_dt_content INTO DATA(lx_apj_dt_content).
-        IF  NOT ( lx_apj_dt_content->if_t100_message~t100key-msgno = cx_apj_dt_content=>cx_object_already_exists-msgno AND
-                 lx_apj_dt_content->if_t100_message~t100key-msgid = cx_apj_dt_content=>cx_object_already_exists-msgid AND
-                 lx_apj_dt_content->object = 'ZAPP_DEMO_02_TEMPLATE' ).
-          longtext = lx_apj_dt_content->get_text( ).
-          RAISE EXCEPTION NEW zdmo_cx_rap_generator( textid     = zdmo_cx_rap_generator=>job_scheduling_error
-                                                     mv_value   = CONV #( longtext-msgv1 )
-                                                     mv_value_2 = CONV #( longtext-msgv2 )
-                                                     previous   = lx_apj_dt_content
-                                                     ).
-        ELSE.
-          r_job_template_name = lx_apj_dt_content->get_text(  ).
-        ENDIF.
+*        IF  NOT ( lx_apj_dt_content->if_t100_message~t100key-msgno = cx_apj_dt_content=>cx_object_already_exists-msgno AND
+*                 lx_apj_dt_content->if_t100_message~t100key-msgid = cx_apj_dt_content=>cx_object_already_exists-msgid AND
+*                 lx_apj_dt_content->object = job_template_name ).
+*          longtext = lx_apj_dt_content->get_text( ).
+        RAISE EXCEPTION NEW zapp_cx_demo_01( textid     = zapp_cx_demo_01=>job_scheduling_error
+                                                   error_value_1   = CONV #( longtext-msgv1 )
+                                                   error_value_2 = CONV #( longtext-msgv2 )
+                                                   previous   = lx_apj_dt_content
+                                                   ).
+*        ELSE.
+*          r_job_template_name = lx_apj_dt_content->get_text(  ).
+*        ENDIF.
     ENDTRY.
   ENDMETHOD.
 
@@ -225,9 +224,9 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
           "MSGID   BL  SYMSGID C   20
           "MSGNO   602 SYMSGNO N   3
           longtext = lx_bali_objects->get_text( ).
-          RAISE EXCEPTION NEW zdmo_cx_rap_generator( textid     = zdmo_cx_rap_generator=>job_scheduling_error
-                                                     mv_value   = CONV #( longtext-msgv1 )
-                                                     mv_value_2 = CONV #( longtext-msgv2 )
+          RAISE EXCEPTION NEW zapp_cx_demo_01( textid     = zapp_cx_demo_01=>job_scheduling_error
+                                                     error_value_1   = CONV #( longtext-msgv1 )
+                                                     error_value_2 = CONV #( longtext-msgv2 )
                                                      previous   = lx_bali_objects
                                                      ).
 
@@ -242,25 +241,49 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
 
   METHOD constructor.
 
-    DATA me_name  TYPE sxco_ao_object_name  .
+*    DATA me_name  TYPE sxco_ao_object_name  .
     super->constructor( ).
 
-    package_name_of_rap_generator = 'Z_DEMO_APPL_JOBS'.
+*    DATA suffix TYPE string VALUE '02'.
+    application_log_sub_obj1_name = |ZAPP_DEMO_{ suffix }_SUB|."'ZAPP_DEMO_01_SUB'.
+    application_log_sub_obj1_text = |Application Log { suffix }| .
+    application_log_object_name = |ZAPP_DEMO_{ suffix }_LOG|. "'ZAPP_DEMO_01_LOG' .
+    job_catalog_name = |ZAPP_DEMO_{ suffix }| . "'ZAPP_DEMO_01'  .
+    job_class_name = |ZAPP_CL_DEMO_{ suffix }| ."'ZAPP_CL_DEMO_01'  .
+    job_catalog_text = |Demo Application Jobs { suffix } |  .
+    job_template_name = |ZAPP_DEMO_{ suffix }_TEMPLATE| ."'ZAPP_DEMO_01_TEMPLATE'  .
+    job_template_text = |Demo Application Jobs { suffix } |  .  .
+    application_log_object_text = |Application Log of appl job demo { suffix } | .
+
+*    package_name_of_rap_generator = 'Z_DEMO_APPL_JOBS'.
+    DATA exception_text TYPE string.
 
     TRY.
-        me_name = cl_abap_classdescr=>get_class_name( me ).
-        DATA(my_class) = xco_cp_abap_repository=>object->clas->for( me_name ).
+
+
+        DATA(me_name) = CONV sxco_ao_object_name( substring_after( val = cl_abap_classdescr=>get_class_name( me ) sub = '\CLASS=' ) ).
+        DATA(my_class) = xco_abap_repository=>object->clas->for( me_name ).
+        package_of_rap_generator =  my_class->if_xco_ar_object~get_package(  ).
+        DATA(me_package_name) =  package_of_rap_generator->name.
+*        me_name = cl_abap_classdescr=>get_class_name( me ).
+*        DATA(my_class) = xco_abap_repository=>object->clas->for( me_name ).
 *      package_of_rap_generator =  my_class->if_xco_ar_object~get_package(  ).
-        package_of_rap_generator = xco_cp_abap_repository=>object->devc->for( package_name_of_rap_generator ).
+*        package_of_rap_generator = xco_abap_repository=>object->devc->for( package_name_of_rap_generator ).
         IF package_of_rap_generator->read( )-property-record_object_changes = abap_true.
           transport_request = create_transport(  ).
         ELSE.
           CLEAR transport_request.
         ENDIF.
         transport_request = create_transport(  ).
-      CATCH cx_root INTO DATA(setup_exception).
-*        out->write( 'error' ).
-*        out->write( setup_exception->get_text(  ) ).
+      CATCH zapp_cx_demo_01 INTO DATA(setup_exception).
+        exception_text = setup_exception->get_text(  ).
+      CATCH cx_root INTO DATA(root_exception).
+        exception_text = root_exception->get_text(  ).
+        RAISE EXCEPTION NEW zapp_cx_demo_01( textid     = zapp_cx_demo_01=>root_cause_exception
+                                                   error_value_1   = CONV #( root_exception->get_text(  ) )
+*                                                     ERROR_VALUE_2 = CONV #( longtext-msgv2 )
+*                                                     previous   = lx_bali_objects
+                                                   ).
     ENDTRY.
 
 

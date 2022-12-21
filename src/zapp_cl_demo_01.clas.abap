@@ -264,7 +264,7 @@ CLASS zapp_cl_demo_01 IMPLEMENTATION.
       application_log->add_item( item = application_log_free_text ).
       cl_bali_log_db=>get_instance( )->save_log(
                                                  log = application_log
-                                                 assign_to_current_appl_job = abap_true
+*                                                 assign_to_current_appl_job = abap_true
                                                  ).
     ELSE.
       out->write( |sy-batch = abap_false | ).

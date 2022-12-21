@@ -1,10 +1,10 @@
 CLASS lhc_inventory DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
     METHODS:
-      get_global_authorizations FOR GLOBAL AUTHORIZATION
-        IMPORTING
-        REQUEST requested_authorizations FOR Inventory
-        RESULT result,
+*      get_global_authorizations FOR GLOBAL AUTHORIZATION
+*        IMPORTING
+*        REQUEST requested_authorizations FOR Inventory
+*        RESULT result,
       calculateinventoryid FOR DETERMINE ON SAVE
         IMPORTING
           keys FOR  Inventory~CalculateInventoryID ,
@@ -16,8 +16,8 @@ CLASS lhc_inventory DEFINITION INHERITING FROM cl_abap_behavior_handler.
 ENDCLASS.
 
 CLASS lhc_inventory IMPLEMENTATION.
-  METHOD get_global_authorizations.
-  ENDMETHOD.
+*  METHOD get_global_authorizations.
+*  ENDMETHOD.
   METHOD calculateinventoryid.
     "Ensure idempotence
     READ ENTITIES OF zappr_inventorytp_01 IN LOCAL MODE

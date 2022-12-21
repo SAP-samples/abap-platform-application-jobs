@@ -26,7 +26,15 @@ CLASS zapp_cx_demo_01 DEFINITION
         attr2 TYPE scx_attrname VALUE 'ERROR_VALUE_2',
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
-      END OF root_cause_exception
+      END OF root_cause_exception,
+      BEGIN OF job_scheduling_error,
+        msgid TYPE symsgid VALUE 'ZAPP_CM_DEMO_01',
+        msgno TYPE symsgno VALUE '002',
+        attr1 TYPE scx_attrname VALUE 'ERROR_VALUE_1',
+        attr2 TYPE scx_attrname VALUE 'ERROR_VALUE_2',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF job_scheduling_error
       .
 
 
