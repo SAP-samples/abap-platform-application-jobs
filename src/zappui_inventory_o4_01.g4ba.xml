@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_G4BA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <_-IWBEP_-I_V4_MSGA>
+    <_-IWBEP_-I_V4_MSGA>
+     <GROUP_ID>ZAPPUI_INVENTORY_O4_01</GROUP_ID>
+     <SERVICE_ID>/IWBEP/COMMON</SERVICE_ID>
+     <REPOSITORY_ID>DEFAULT</REPOSITORY_ID>
+     <CREATED_BY>S4H_EXT</CREATED_BY>
+     <CHANGED_BY>S4H_EXT</CHANGED_BY>
+     <CREATED_TS>20221219094246</CREATED_TS>
+     <CHANGED_TS>20221219094246</CHANGED_TS>
+    </_-IWBEP_-I_V4_MSGA>
+   </_-IWBEP_-I_V4_MSGA>
+   <_-IWBEP_-I_V4_MSGR>
+    <_-IWBEP_-I_V4_MSGR>
+     <GROUP_ID>ZAPPUI_INVENTORY_O4_01</GROUP_ID>
+     <CREATED_BY>S4H_EXT</CREATED_BY>
+     <CHANGED_BY>S4H_EXT</CHANGED_BY>
+     <CREATED_TS>20221219094246</CREATED_TS>
+     <CHANGED_TS>20221219094246</CHANGED_TS>
+     <ASSIGNMENT_REPO_ID>SADL</ASSIGNMENT_REPO_ID>
+     <EXTERNAL_GROUP_ID>ZAPPUI_INVENTORY_O4_01</EXTERNAL_GROUP_ID>
+    </_-IWBEP_-I_V4_MSGR>
+   </_-IWBEP_-I_V4_MSGR>
+   <_-IWBEP_-I_V4_MSGT>
+    <_-IWBEP_-I_V4_MSGT>
+     <GROUP_ID>ZAPPUI_INVENTORY_O4_01</GROUP_ID>
+     <LANGUAGE>E</LANGUAGE>
+     <DESCRIPTION>Service binding for Inventory</DESCRIPTION>
+    </_-IWBEP_-I_V4_MSGT>
+   </_-IWBEP_-I_V4_MSGT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

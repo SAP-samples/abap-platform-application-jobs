@@ -8,7 +8,7 @@ persistent table zapp_inven_01
 draft table zappinvent00d_01
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
-authorization master ( global )
+//authorization master ( global )
 
 {
   field ( readonly )

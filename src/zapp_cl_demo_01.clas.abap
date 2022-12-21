@@ -191,7 +191,7 @@ CLASS zapp_cl_demo_01 IMPLEMENTATION.
         ENDIF.
 
         add_text_to_app_log_or_console( |wait up to { wait_time_in_seconds } seconds ...| ).
-        WAIT UP TO wait_time_in_seconds SECONDS.
+*        WAIT UP TO wait_time_in_seconds SECONDS.
 
         IF update IS NOT INITIAL AND update_failed IS INITIAL.
 
@@ -238,7 +238,7 @@ CLASS zapp_cl_demo_01 IMPLEMENTATION.
         ENDIF.
 
         add_text_to_app_log_or_console( |wait up to { wait_time_in_seconds } seconds ...| ).
-        WAIT UP TO wait_time_in_seconds SECONDS.
+*        WAIT UP TO wait_time_in_seconds SECONDS.
 
         add_text_to_app_log_or_console( |job finished| ).
 
