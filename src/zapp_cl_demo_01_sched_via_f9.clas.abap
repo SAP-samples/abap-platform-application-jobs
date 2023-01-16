@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zapp_cl_demo_01_sched_via_f9 IMPLEMENTATION.
+CLASS ZAPP_CL_DEMO_01_SCHED_VIA_F9 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

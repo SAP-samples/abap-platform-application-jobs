@@ -49,6 +49,7 @@ define root view entity ZAPPC_InventoryTP_01
   virtual  JobStatusText        : abap.char( 20 ),
            @EndUserText.label: 'Criticality'
            @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZAPP_CL_GEN_GET_JOB_STATUS'
-  virtual  JobStatusCriticality : abap.int1
+  virtual  JobStatusCriticality : abap.int1,
+  _ApplicationLog
   
 }

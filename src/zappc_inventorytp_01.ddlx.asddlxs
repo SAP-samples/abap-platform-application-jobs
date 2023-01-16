@@ -45,7 +45,23 @@ annotate view ZAPPC_InventoryTP_01 with
     type: #IDENTIFICATION_REFERENCE,
     label: 'General Information',
     position: 10
-  } ]
+  } 
+  
+        ,
+  
+       {
+        id: 'idApplicationLogItem',
+//        type: #PRESENTATIONVARIANT_REFERENCE ,
+         type: #LINEITEM_REFERENCE,
+        label: 'Application Log',
+        position: 25 ,
+//        targetQualifier: 'pVariant',
+  
+        targetElement: '_ApplicationLog'
+      }
+  
+  
+  ]
   @UI.hidden: true
   UUID;
 

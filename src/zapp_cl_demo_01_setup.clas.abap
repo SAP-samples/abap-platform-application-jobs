@@ -49,7 +49,7 @@ ENDCLASS.
 
 
 
-CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
+CLASS ZAPP_CL_DEMO_01_SETUP IMPLEMENTATION.
 
 
   METHOD main.
@@ -85,11 +85,11 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
     TRY.
         package_name_to_check = package_of_rap_generator->name.
 
-        WHILE xco_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-transport_layer->value = '$SPL'.
+        WHILE xco_cp_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-transport_layer->value = '$SPL'.
 *         xco_lib->get_package( package_name_to_check )->read( )-property-transport_layer->value = '$SPL'.
-          package_name_to_check = xco_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-super_package->name.
+          package_name_to_check = xco_cp_abap_repository=>object->devc->for( package_name_to_check )->read( )-property-super_package->name.
         ENDWHILE.
-        DATA(transport_target) = xco_abap_repository=>object->devc->for( package_name_to_check
+        DATA(transport_target) = xco_cp_abap_repository=>object->devc->for( package_name_to_check
           )->read( )-property-transport_layer->get_transport_target( ).
         DATA(transport_target_name) = transport_target->value.
         r_transport_request = xco_cp_cts=>transports->workbench( transport_target_name )->create_request( transport_request_description )->value.
@@ -262,13 +262,13 @@ CLASS zapp_cl_demo_01_setup IMPLEMENTATION.
 
 
         DATA(me_name) = CONV sxco_ao_object_name( substring_after( val = cl_abap_classdescr=>get_class_name( me ) sub = '\CLASS=' ) ).
-        DATA(my_class) = xco_abap_repository=>object->clas->for( me_name ).
+        DATA(my_class) = xco_cp_abap_repository=>object->clas->for( me_name ).
         package_of_rap_generator =  my_class->if_xco_ar_object~get_package(  ).
         DATA(me_package_name) =  package_of_rap_generator->name.
 *        me_name = cl_abap_classdescr=>get_class_name( me ).
-*        DATA(my_class) = xco_abap_repository=>object->clas->for( me_name ).
+*        DATA(my_class) = xco_cp_abap_repository=>object->clas->for( me_name ).
 *      package_of_rap_generator =  my_class->if_xco_ar_object~get_package(  ).
-*        package_of_rap_generator = xco_abap_repository=>object->devc->for( package_name_of_rap_generator ).
+*        package_of_rap_generator = xco_cp_abap_repository=>object->devc->for( package_name_of_rap_generator ).
         IF package_of_rap_generator->read( )-property-record_object_changes = abap_true.
           transport_request = create_transport(  ).
         ELSE.

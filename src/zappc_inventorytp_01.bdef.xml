@@ -10,6 +10,11 @@
     <LANGUAGE>EN</LANGUAGE>
     <LINKS>
      <item>
+      <HREF>./zappc_inventorytp_01/source/main/versions</HREF>
+      <REL>http://www.sap.com/adt/relations/versions</REL>
+      <TITLE>Historic versions</TITLE>
+     </item>
+     <item>
       <HREF>./zappc_inventorytp_01/source/main</HREF>
       <REL>http://www.sap.com/adt/relations/source</REL>
       <TYPE>text/plain</TYPE>
@@ -20,11 +25,6 @@
       <REL>http://www.sap.com/adt/relations/source</REL>
       <TYPE>text/html</TYPE>
       <TITLE>Source Content (HTML)</TITLE>
-     </item>
-     <item>
-      <HREF>./zappc_inventorytp_01/source/main/versions</HREF>
-      <REL>http://www.sap.com/adt/relations/versions</REL>
-      <TITLE>Historic versions</TITLE>
      </item>
      <item>
       <HREF>./zappc_inventorytp_01/objectstructure</HREF>
@@ -39,6 +39,7 @@
      </item>
     </LINKS>
     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+    <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
     <SOURCE_URI>./zappc_inventorytp_01/source/main</SOURCE_URI>
     <SOURCE_TYPE>ABAP_SOURCE</SOURCE_TYPE>
     <SOURCE_FIXED_POINT_ARITHMETIC>true</SOURCE_FIXED_POINT_ARITHMETIC>

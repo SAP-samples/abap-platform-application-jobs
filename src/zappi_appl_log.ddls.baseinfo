@@ -2,13 +2,9 @@
 "BASEINFO":
 {
 "FROM":
-[
-"ZAPP_INVEN_01"
-],
+[],
 "ASSOCIATED":
-[
-"ZAPPI_APPL_LOG"
-],
+[],
 "BASE":
 [],
 "ANNO_REF":

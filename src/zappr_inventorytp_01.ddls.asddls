@@ -3,6 +3,7 @@
 @EndUserText.label: 'CDS View forInventory'
 define root view entity ZAPPR_InventoryTP_01
   as select from zapp_inven_01
+   association [0..*] to ZAPPI_appl_log as _ApplicationLog     on $projection.LogHandle = _ApplicationLog.Log_handle
 {
   key uuid                  as UUID,
       inventory_id          as InventoryID,
@@ -28,6 +29,7 @@ define root view entity ZAPPR_InventoryTP_01
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at       as LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      local_last_changed_at as LocalLastChangedAt
+      local_last_changed_at as LocalLastChangedAt,
+      _ApplicationLog
 
 }

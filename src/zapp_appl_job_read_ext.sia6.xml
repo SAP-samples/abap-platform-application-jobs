@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SIA6" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SIA6>
+    <MAIN_OBJECT>
+     <NAME>ZAPP_APPL_JOB_READ_EXT</NAME>
+     <TYPE>SIA6</TYPE>
+     <DESCRIPTION>read application job log</DESCRIPTION>
+     <RESPONSIBLE>CB9980000000</RESPONSIBLE>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+     <MASTER_SYSTEM>T22</MASTER_SYSTEM>
+     <PACKAGE_REF>
+      <PACKAGE_NAME>Z_DEMO_APPL_JOBS</PACKAGE_NAME>
+     </PACKAGE_REF>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </MAIN_OBJECT>
+    <APP_ID>ZAPP_APPL_JOB_READ_EXT</APP_ID>
+    <APP_TYPE>EXT</APP_TYPE>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <AUTH>
+     <item>
+      <AUTH_OBJECT>S_APPL_LOG</AUTH_OBJECT>
+      <STATUS>U</STATUS>
+      <TEXT>Applications log</TEXT>
+      <AUTH_ITEM>
+       <item>
+        <AUTH_OBJECT>S_APPL_LOG</AUTH_OBJECT>
+        <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
+        <TEXT>Applications log</TEXT>
+        <STATUS>U</STATUS>
+        <VALUES>
+         <item>
+          <FIELD>ACTVT</FIELD>
+          <VALUE>Delete, Display</VALUE>
+          <VALUES>
+           <item>
+            <LOW_VALUE>06</LOW_VALUE>
+           </item>
+           <item>
+            <LOW_VALUE>03</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Activity</TEXT>
+          <STATUS>U</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+         <item>
+          <FIELD>ALG_OBJECT</FIELD>
+          <VALUE>ZAPP_DEMO_01_LOG</VALUE>
+          <VALUES>
+           <item>
+            <LOW_VALUE>ZAPP_DEMO_01_LOG</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Application log: Object name (Application code)</TEXT>
+          <STATUS>U</STATUS>
+         </item>
+         <item>
+          <FIELD>ALG_SUBOBJ</FIELD>
+          <VALUE>ZAPP_DEMO_01_SUB</VALUE>
+          <VALUES>
+           <item>
+            <LOW_VALUE>ZAPP_DEMO_01_SUB</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Subobject</TEXT>
+          <STATUS>U</STATUS>
+         </item>
+        </VALUES>
+       </item>
+      </AUTH_ITEM>
+     </item>
+    </AUTH>
+   </SIA6>
+  </asx:values>
+ </asx:abap>
+</abapGit>
