@@ -277,6 +277,19 @@ and by adding appropriate ``@UI.facet`` entries in the meta data extension file 
   ]
 </pre>
 
+### Authorization checks
+
+Scheduling an application job as well as reading an application log requires that the user has appropriate authorizations.  
+
+#### Application Job   
+
+Creating the application log catalog entry and application log template entry generates an IAM App in Steampunk that has to be assigned to a business catalog which has to be assigned via a role to the end user that shall schedule the application job.
+
+#### Application log  
+
+Reading the application log using the aforementioned API requires that the user has an authorization based on the authorization object ``S_APPL_LOG``.   
+The setup class for this sample application creates an applicaiton log object with the name ``ZAPP_DEMO_01_LOG`` and a a sub object ``ZAPP_DEMO_01_SUB``.  
+
 
 
 ## Requirements
