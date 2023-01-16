@@ -23,8 +23,13 @@ List page
  Object page   
  
  <img src="images/z_demo_appl_jobs_010.png" alt="table" width="50%">     
+ 
+ Object page with Application Log Support   
+ 
+ <img src="images/JobLog Application Log.png" alt="table" width="50%">
+ 
 
-### Coding explained
+### Job scheduling support 
 
 #### Implementing the class that runs as an application job
 
@@ -171,7 +176,106 @@ These fields contain the job status (for example **'F'** for finished) and the a
 </pre>
 
 
+### Adding support to display the application log  
 
+#### Custom entity
+
+The application log can be read using the api ``cl_bali_log_db`` using the handle of the application log that was stored in our sample application in the save sequence when the job was scheduled. The application log is retrieved using the following coding:   
+
+<pre>
+  DATA(l_log) = cl_bali_log_db=>get_instance( )->load_log( handle = l_handle 
+                                                           read_only_header = abap_true ).  
+  DATA(log_items) = l_log->get_all_items( ).  
+</pre>
+
+The custom entity is defined as follows and used the log handle and the item number as its key fields:   
+
+<pre>
+@EndUserText.label: 'RAP Generator - Application Log'
+@ObjectModel.query.implementedBy: 'ABAP:ZAPP_CL_SHOW_APPL_LOG'
+
+@UI: {
+    headerInfo: {
+    typeName: 'AppLogEntry',
+    typeNamePlural: 'AppLogEntries'},
+    presentationVariant: [{
+    maxItems: 20,
+    visualizations: [{type: #AS_LINEITEM}]
+    }]
+    }
+
+define custom entity ZAPPI_appl_log 
+{
+
+  key Log_handle      : balloghndl;
+      @UI.lineItem    : [ {
+      position        : 10 ,
+      importance      : #HIGH,
+      label           : 'Log item number'  } ]
+      @UI.identification: [ {
+      position        : 10 ,
+      importance      : #HIGH,
+      label           : 'Log item number'  } ]
+      @EndUserText.label: 'Logitemnumber'
+      @UI.selectionField: [ { position: 20 } ]
+  key Log_item_number : balmnr;
+
+      @UI.lineItem    : [ {
+          position    : 10 ,
+          importance  : #HIGH,
+          criticality : 'criticality',
+          label       : 'Severity'  } ]
+
+      severity        : symsgty;
+      category        : abap.char(1);
+      criticality     : abap.int1;
+      @UI.lineItem    : [ {
+      position        : 90 ,
+      importance      : #HIGH,
+      label           : 'Detail level'  } ]
+      @UI.identification: [ {
+      position        : 90 ,
+      importance      : #HIGH,
+      label           : 'Detail level'  } ]
+      detail_level    : ballevel;
+      timestamp       : abap.utclong;
+      @UI.lineItem    : [ {
+      position        : 100 ,
+      importance      : #HIGH,
+      label           : 'Message text'  } ]
+      @UI.identification: [ {
+      position        : 100 ,
+      importance      : #HIGH,
+      label           : 'Message text'  } ]
+      message_text    : abap.sstring( 512 );
+
+}
+</pre>
+
+The content of the custom entity can be displayed by adding an association into the root entity of our RAP BO.  
+
+<pre>
+define root view entity ZAPPR_InventoryTP_01
+  as select from zapp_inven_01
+   association [0..*] to ZAPPI_appl_log as _ApplicationLog     on $projection.LogHandle = _ApplicationLog.Log_handle
+</pre>
+
+and by adding appropriate ``@UI.facet`` entries in the meta data extension file of the root entity of our RAP business object.
+
+<pre>   
+
+  @UI.facet: [ 
+  ...
+  ,
+  {
+        id: 'idApplicationLogItem',
+        type: #LINEITEM_REFERENCE,
+        label: 'Application Log',
+        position: 25 ,
+        targetElement: '_ApplicationLog'
+      }
+  ]
+</pre>
 
 
 
