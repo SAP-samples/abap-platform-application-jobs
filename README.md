@@ -58,11 +58,15 @@ This method plays a similar part as the select option part of classic ABAP repor
 #### application log, job catalog entry and jop template
 
 In order to schedule our class as an application job we have to create a job catalog entry and a job template.
-And to be able to write the output of your class to ab application log we also have to create an application log object if there is no existing application log object that shall be reused.  
+And to be able to write the output of your class to an application log we also have to create an application log object if there is no existing application log object that shall be reused.  
 All three objects are being created by the setup class **zapp_cl_demo_01_setup**.   
 Alternatively it is possible to create those objects manually using the appropriate json based editors.  
+
 After an application job has been started an after it has been scheduled the job status and the job log can be checked using the administrative job scheduling app.  
-(it has to be checked why a developer can run the application jobs of the RAP generator)
+
+In addition sample code has been added to this repository so that the application log can be integrated into the Fiori Elements application that is used as the UI for our RAP business object. 
+
+Instead of using a SAPUI5 reuse component this allows for a tighter integration in your application and does not require any additional UI development since all the changes can be performed on the backend side. 
 
 #### RAP business object   
 
