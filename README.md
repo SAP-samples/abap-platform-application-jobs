@@ -1,4 +1,4 @@
-# How to schedule application jobs from a RAP-based business object
+# How to schedule application jobs from a RAP-based business object and how to display the application log in a Fiori Elements application
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
