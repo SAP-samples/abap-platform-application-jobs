@@ -294,7 +294,7 @@ Creating the application log catalog entry and application log template entry ge
 Reading the application log using the aforementioned API requires that the user has an authorization based on the authorization object ``S_APPL_LOG``.   
 The setup class for this sample application creates an applicaiton log object with the name ``ZAPP_DEMO_01_LOG`` and a a sub object ``ZAPP_DEMO_01_SUB``.  
 
-
+<img src="images/S_APPL_LOG_Authorization.png" alt="table" width="50%">
 
 ## Requirements
 
