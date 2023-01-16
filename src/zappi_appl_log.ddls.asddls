@@ -1,36 +1,45 @@
 @EndUserText.label: 'RAP Generator - Application Log'
 @ObjectModel.query.implementedBy: 'ABAP:ZAPP_CL_SHOW_APPL_LOG'
-//@Search.searchable: true
 
 @UI: {
     headerInfo: {
+    title: {
+      type: #STANDARD,
+      label: 'Item Number',
+      value: 'Log_item_number'
+    },   
     typeName: 'AppLogEntry',
     typeNamePlural: 'AppLogEntries'},
-
     presentationVariant: [{
     maxItems: 20,
-//    qualifier: 'pVariant',
     visualizations: [{type: #AS_LINEITEM}]
     }]
-
-
-
     }
 
-define custom entity ZAPPI_appl_log 
+define custom entity ZAPPI_appl_log
 {
-      //      @Search.defaultSearchElement: true
-      //      @Search.fuzzinessThreshold: 0.90
-      //      @EndUserText.label : 'Log Item Number'
-//      @UI.lineItem    : [ {
-//      position        : 5 ,
-//      importance      : #HIGH,
-//      label           : 'Log handle'  } ]
-//      @UI.identification: [ {
-//      position        : 5 ,
-//      importance      : #HIGH ,
-//      label           : 'Log handle' } ]
 
+
+@UI.facet: [ 
+//{
+//    id: 'idCollection',
+//    type: #COLLECTION,
+//    label: 'Inventory',
+//    position: 10
+//  },
+//  {
+//    purpose: #HEADER,
+//    type: #FIELDGROUP_REFERENCE,
+//    position: 50,
+//    targetQualifier: 'Fieldgroup1'
+//  },
+  {
+    id: 'idIdentification',    
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'General Information',
+    position: 10
+  }  
+  ]
 
   key Log_handle      : balloghndl;
       @UI.lineItem    : [ {
@@ -49,7 +58,7 @@ define custom entity ZAPPI_appl_log
           position    : 10 ,
           importance  : #HIGH,
           criticality : 'criticality',
-          label       : 'Severity'  } ]
+          label       : 'Severity' } ]
 
       severity        : symsgty;
       category        : abap.char(1);
@@ -75,4 +84,3 @@ define custom entity ZAPPI_appl_log
       message_text    : abap.sstring( 512 );
 
 }
-  
