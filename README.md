@@ -285,6 +285,8 @@ and by adding appropriate ``@UI.facet`` entries in the meta data extension file 
 
 Scheduling an application job as well as reading an application log requires that the user has appropriate authorizations.  
 
+https://help.sap.com/docs/SAP_S4HANA_CLOUD/6aa39f1ac05441e5a23f484f31e477e7/bb559a5a4b654996a167d72273f28542.html?locale=en-US&q=application%20job%20api
+
 #### Application Job   
 
 Creating the application log catalog entry and application log template entry generates an IAM App in Steampunk that has to be assigned to a business catalog which has to be assigned via a role to the end user that shall schedule the application job.
