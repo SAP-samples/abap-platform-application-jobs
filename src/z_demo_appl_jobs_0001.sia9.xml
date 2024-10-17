@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SIA9" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SIA9>
+    <BRT_BU_CATALOG_ID>Z_DEMO_APPL_JOBS_0001</BRT_BU_CATALOG_ID>
+    <BRT_ID>Z_DEMO_APPL_JOBS</BRT_ID>
+    <BU_CATALOG_ID>Z_DEMO_APPL_JOBS</BU_CATALOG_ID>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <NAME>Z_DEMO_APPL_JOBS_0001</NAME>
+    <TYPE>SIA9</TYPE>
+    <DESCRIPTION>Z_DEMO_APPL_JOBS</DESCRIPTION>
+    <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+   </SIA9>
+  </asx:values>
+ </asx:abap>
+</abapGit>

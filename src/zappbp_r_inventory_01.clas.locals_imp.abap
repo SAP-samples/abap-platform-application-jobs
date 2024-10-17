@@ -213,7 +213,8 @@ CLASS lsc_inventory IMPLEMENTATION.
                                                id = 'ZAPP_CM_DEMO_01'
                                                number   = 000
                                                severity = if_abap_behv_message=>severity-error
-                                               v1       = |Job Sched Error: { job_scheduling_error->get_text(  ) }|
+                                               v1       = |Job Sched Error: { job_scheduling_error->get_longtext(  ) }|
+                                               v2 = |  { job_scheduling_error->bapimsg-message  } |
                                                )
                           )
             TO reported-inventory.

@@ -1,0 +1,14 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Application Log of appl job demo 01",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "subobjects": [
+    {
+      "name": "ZAPP_DEMO_01_SUB",
+      "description": "Application Log 01"
+    }
+  ]
+}

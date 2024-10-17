@@ -1,0 +1,23 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Demo Application Jobs 01",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "className": "ZAPP_CL_DEMO_01"
+  },
+  "groups": [
+    {
+      "name": "GRP_DEF",
+      "title": "Default"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "INVENT",
+      "group": "GRP_DEF"
+    }
+  ]
+}
