@@ -62,7 +62,7 @@ annotate view ZAPPC_InventoryTP_01 with
   
   
   ]
-  @UI.hidden: true
+//  @UI.hidden: true
   UUID;
 
   @UI.lineItem: [ {
