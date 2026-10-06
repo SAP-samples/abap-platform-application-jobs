@@ -1,0 +1,4 @@
+define service ZAPPInventory_01 {
+  expose ZAPPC_InventoryTP_01 as Inventory;
+  expose ZAPPI_appl_log;
+}

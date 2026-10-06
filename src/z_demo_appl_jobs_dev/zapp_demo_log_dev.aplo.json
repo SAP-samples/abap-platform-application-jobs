@@ -1,0 +1,14 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Application Log Dev Demo",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "subobjects": [
+    {
+      "name": "ZAPP_DEMO_LOG_DEV_SO",
+      "description": "Appliaction Log Dev Demo Sub Object"
+    }
+  ]
+}

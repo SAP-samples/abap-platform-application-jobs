@@ -1,0 +1,37 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "application job demo template with VH",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "catalogName": "Z_DEMO_APPL_JOB_CAT_DEV_VH"
+  },
+  "parameters": {
+    "singleValueParameters": [
+      {
+        "name": "AGENCIES_AVAILABLE",
+        "value": ""
+      },
+      {
+        "name": "STATUS",
+        "value": "O"
+      }
+    ],
+    "valueRangesParameters": [
+      {
+        "name": "AGENCY_IDS",
+        "valueRanges": []
+      },
+      {
+        "name": "CUSTOMER_IDS",
+        "valueRanges": []
+      },
+      {
+        "name": "TRAVEL_IDS",
+        "valueRanges": []
+      }
+    ]
+  }
+}

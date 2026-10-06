@@ -1,0 +1,29 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "application job catalog entry",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "className": "ZAPP_CL_DEMO_DEV"
+  },
+  "parameters": [
+    {
+      "name": "AGENCY_IDS",
+      "title": "Agencies"
+    },
+    {
+      "name": "CUSTOMER_IDS",
+      "title": "Customers"
+    },
+    {
+      "name": "STATUS",
+      "title": "Status"
+    },
+    {
+      "name": "TRAVEL_IDS",
+      "title": "Travel IDs"
+    }
+  ]
+}
