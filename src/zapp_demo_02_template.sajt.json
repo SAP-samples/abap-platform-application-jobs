@@ -1,0 +1,19 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Job template",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "catalogName": "ZAPP_DEMO_02"
+  },
+  "parameters": {
+    "singleValueParameters": [
+      {
+        "name": "INVENTORY_UUID",
+        "value": ""
+      }
+    ]
+  }
+}

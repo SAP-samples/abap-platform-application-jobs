@@ -1,0 +1,74 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "application job catalog entry",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "className": "ZAPP_CL_DEMO_DEV"
+  },
+  "sections": [
+    {
+      "name": "SECTION_1",
+      "title": "Business Partners"
+    },
+    {
+      "name": "SECTION_2",
+      "title": "Other data"
+    }
+  ],
+  "groups": [
+    {
+      "name": "GROUP_1",
+      "title": "Group 1",
+      "section": "SECTION_1"
+    },
+    {
+      "name": "GROUP_2",
+      "title": "Group 2",
+      "section": "SECTION_1"
+    },
+    {
+      "name": "GROUP_3",
+      "title": "Group 3",
+      "section": "SECTION_2"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "AGENCY_IDS",
+      "title": "Agencies",
+      "group": "GROUP_1",
+      "enabledByParameter": "AGENCIES_AVAILABLE",
+      "valueHelp": "ZDMO_I_AGENCY_STDVH",
+      "valueHelpType": "cdsView"
+    },
+    {
+      "name": "AGENCIES_AVAILABLE",
+      "title": "Agencies available",
+      "group": "GROUP_1",
+      "screenElement": "checkbox"
+    },
+    {
+      "name": "STATUS",
+      "title": "Status",
+      "group": "GROUP_2",
+      "valueHelp": "/DMO/STATUS",
+      "valueHelpType": "domain"
+    },
+    {
+      "name": "CUSTOMER_IDS",
+      "title": "Customers",
+      "group": "GROUP_3",
+      "mandatory": true,
+      "valueHelp": "ZMDO_I_CUSTOMER_STDVH",
+      "valueHelpType": "cdsView"
+    },
+    {
+      "name": "TRAVEL_IDS",
+      "title": "Travel IDs",
+      "group": "GROUP_3"
+    }
+  ]
+}

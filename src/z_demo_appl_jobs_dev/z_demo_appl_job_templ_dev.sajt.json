@@ -1,0 +1,33 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "application job demo template",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "catalogName": "Z_DEMO_APPL_JOB_CAT_DEV"
+  },
+  "parameters": {
+    "singleValueParameters": [
+      {
+        "name": "STATUS",
+        "value": ""
+      }
+    ],
+    "valueRangesParameters": [
+      {
+        "name": "AGENCY_IDS",
+        "valueRanges": []
+      },
+      {
+        "name": "CUSTOMER_IDS",
+        "valueRanges": []
+      },
+      {
+        "name": "TRAVEL_IDS",
+        "valueRanges": []
+      }
+    ]
+  }
+}

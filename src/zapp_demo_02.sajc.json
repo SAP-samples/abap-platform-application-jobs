@@ -1,0 +1,17 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "demo application jobs 02",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "className": "ZAPP_CL_DEMO_02"
+  },
+  "parameters": [
+    {
+      "name": "INVENTORY_UUID",
+      "title": "Inventory UUID"
+    }
+  ]
+}
